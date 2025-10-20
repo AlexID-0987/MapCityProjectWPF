@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using MapCityProject.Model;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,6 +17,8 @@ namespace MapCityProject
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly float[] CoordinateTo = new float[2];
+        private readonly float[] CoordinateEnd = new float[2];
         public MainWindow()
         {
             InitializeComponent();
@@ -23,6 +26,8 @@ namespace MapCityProject
             db.Database.EnsureCreated();
             CityData.Initialize(db);
             Map_Loaded();
+            
+
         }
         private void Map_Loaded()
         {
@@ -39,13 +44,19 @@ namespace MapCityProject
         }
         private void CitySelected(object sender, SelectionChangedEventArgs e)
         {
-            if(searchCity.SelectedItem is City city)
+            
+            
+            if (searchCity.SelectedItem is City city)
             {
                 cityInfo.Text = $"Location: {city.coordinateX}, {city.coordinateY}!";
-            }
+                CoordinateTo[0] = city.coordinateX;
+                CoordinateTo[1] = city.coordinateY;
+            } 
             if (searchCity1.SelectedItem is City city1)
             {
                 cityInfo1.Text = $"Location: {city1.coordinateX}, {city1.coordinateY}!";
+                CoordinateEnd[0] = city1.coordinateX;
+                CoordinateEnd[1] = city1.coordinateY;
             }
         }
        
@@ -53,6 +64,18 @@ namespace MapCityProject
         private void LoadCityesClick(object sender, RoutedEventArgs e)
         {
             Map_Loaded();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Direction direction = new Direction();
+            direction.SetStartCoordinates(MainMap, CoordinateTo, CoordinateEnd);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Direction direction = new Direction();
+            direction.UpdateMap(MainMap);
         }
     }
 }
