@@ -1,0 +1,21 @@
+﻿<Window x:Class="MapCityProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MapCityProject"
+        mc:Ignorable="d"
+        Title="MainDisplay" Height="450" Width="800">
+    <StackPanel HorizontalAlignment="Left" Margin="5">
+        <TextBlock Text="City Map Display" FontSize="24" Width="250" Height="30" FontWeight="Bold" Margin="0,0,0,5"/>
+        <ComboBox x:Name="searchCity" Width="250" Height="40" Margin="0,0,0,10" SelectionChanged="CitySelected" FontSize="24" />
+        <TextBlock x:Name="cityInfo" Text="" FontSize="10" Width="200" Height="30" TextWrapping="Wrap" Margin="0,0,0,10"/>
+        <Label Content="TO:" FontWeight="Bold" FontSize="24" Height="40" Foreground="red" HorizontalAlignment="Center" />
+        <TextBlock Text="City Map Display" FontSize="24" Width="250" Height="30" FontWeight="Bold" Margin="0,0,0,5"/>
+        <ComboBox x:Name="searchCity1" Width="250" Height="40" Margin="0,0,0,10" SelectionChanged="CitySelected" FontSize="24"/>
+        <TextBlock x:Name="cityInfo1" Text="" FontSize="10" Width="200" Height="30" TextWrapping="Wrap" Margin="0,0,0,10"/>
+        <Button Content="Update" Click="LoadCityesClick" Width="150" Margin="0,20,0,0" BorderBrush="Coral" Foreground="Green" FontSize="20"/>
+    </StackPanel>
+    
+
+</Window>
