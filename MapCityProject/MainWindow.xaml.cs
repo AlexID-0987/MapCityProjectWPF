@@ -26,7 +26,7 @@ namespace MapCityProject
             db.Database.EnsureCreated();
             CityData.Initialize(db);
             Map_Loaded();
-            
+            statusText.Text = "Map connected successfully.";   
 
         }
         private void Map_Loaded()
@@ -69,7 +69,10 @@ namespace MapCityProject
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Direction direction = new Direction();
+            CalculationDirection calculationDirection = new CalculationDirection();
             direction.SetStartCoordinates(MainMap, CoordinateTo, CoordinateEnd);
+            double floatDistance = calculationDirection.CalculateDistance(CoordinateTo, CoordinateEnd);    
+            statusText.Text=$"Distance {Math.Round(floatDistance,2)} KM ";
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
