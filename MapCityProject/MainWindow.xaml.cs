@@ -1,4 +1,5 @@
 ﻿using MapCityProject.Model;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,6 +20,10 @@ namespace MapCityProject
     {
         private readonly float[] CoordinateTo = new float[2];
         private readonly float[] CoordinateEnd = new float[2];
+        private readonly string[] cityTo =new string[2];
+        
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -51,12 +56,16 @@ namespace MapCityProject
                 cityInfo.Text = $"Location: {city.coordinateX}, {city.coordinateY}!";
                 CoordinateTo[0] = city.coordinateX;
                 CoordinateTo[1] = city.coordinateY;
+                cityTo[0]=city.CityName;
+
             } 
             if (searchCity1.SelectedItem is City city1)
             {
                 cityInfo1.Text = $"Location: {city1.coordinateX}, {city1.coordinateY}!";
                 CoordinateEnd[0] = city1.coordinateX;
                 CoordinateEnd[1] = city1.coordinateY;
+                cityTo[1]=city1.CityName;
+
             }
         }
        
@@ -69,10 +78,12 @@ namespace MapCityProject
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Direction direction = new Direction();
+            
+            
             CalculationDirection calculationDirection = new CalculationDirection();
             direction.SetStartCoordinates(MainMap, CoordinateTo, CoordinateEnd);
             double floatDistance = calculationDirection.CalculateDistance(CoordinateTo, CoordinateEnd);    
-            statusText.Text=$"Distance {Math.Round(floatDistance,2)} KM ";
+            statusText.Text=$"Distance {cityTo[0]} To {cityTo[1]} {Math.Round(floatDistance,2)} KM ";
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

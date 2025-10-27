@@ -20,7 +20,7 @@ namespace MapCityProject.Model
                        Math.Sin(deltaLon / 2) * Math.Sin(deltaLon / 2);
             double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
             double distance = R * c; // in meters
-            return distance;
+            return distance; 
         }
         private double DegreesToRadians(double degrees)
         {

@@ -10,8 +10,7 @@ namespace MapCityProject.Model
 {
     internal class Direction
     {
-        private float [] startCoordinates = new float[2];
-        private float[] endCoordinates = new float[2];
+       
 
         public void SetStartCoordinates(GMapControl myDrawMap, float[] to, float[]end )
         {
