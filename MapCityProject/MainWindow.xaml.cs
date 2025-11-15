@@ -18,11 +18,11 @@ namespace MapCityProject
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly float[] CoordinateTo = new float[2];
-        private readonly float[] CoordinateEnd = new float[2];
-        private readonly string[] cityTo =new string[2];
         
-
+        IEnumerable<City> IEcityesTo = new List<City>();
+        IEnumerable<City> IEcityesEnd = new List<City>();  
+        CityTo CityTo = new CityTo();
+        
 
         public MainWindow()
         {
@@ -54,17 +54,12 @@ namespace MapCityProject
             if (searchCity.SelectedItem is City city)
             {
                 cityInfo.Text = $"Location: {city.coordinateX}, {city.coordinateY}!";
-                CoordinateTo[0] = city.coordinateX;
-                CoordinateTo[1] = city.coordinateY;
-                cityTo[0]=city.CityName;
-
+                IEcityesTo=IEcityesTo.Append(city);
             } 
             if (searchCity1.SelectedItem is City city1)
             {
                 cityInfo1.Text = $"Location: {city1.coordinateX}, {city1.coordinateY}!";
-                CoordinateEnd[0] = city1.coordinateX;
-                CoordinateEnd[1] = city1.coordinateY;
-                cityTo[1]=city1.CityName;
+                IEcityesEnd=IEcityesEnd.Append(city1);
 
             }
         }
@@ -79,11 +74,11 @@ namespace MapCityProject
         {
             Direction direction = new Direction();
             
-            
+             
             CalculationDirection calculationDirection = new CalculationDirection();
-            direction.SetStartCoordinates(MainMap, CoordinateTo, CoordinateEnd);
-            double floatDistance = calculationDirection.CalculateDistance(CoordinateTo, CoordinateEnd);    
-            statusText.Text=$"Distance {cityTo[0]} To {cityTo[1]} {Math.Round(floatDistance,2)} KM ";
+            direction.SetStartCoordinates(MainMap, CityTo.MyTrevelCoordinate(IEcityesTo), CityTo.MyTrevelCoordinate(IEcityesEnd));
+            double floatDistance = calculationDirection.CalculateDistance(CityTo.MyTrevelCoordinate(IEcityesTo), CityTo.MyTrevelCoordinate(IEcityesEnd));    
+            statusText.Text=$"Distance {CityTo.MyTrevelCityName(IEcityesTo)} To {CityTo.MyTrevelCityName(IEcityesEnd)} {Math.Round(floatDistance,2)} KM ";
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
