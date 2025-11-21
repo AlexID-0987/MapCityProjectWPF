@@ -1,4 +1,5 @@
 ﻿using MapCityProject.Model;
+using MapCityProject.Windows;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -22,14 +23,14 @@ namespace MapCityProject
         IEnumerable<City> IEcityesTo = new List<City>();
         IEnumerable<City> IEcityesEnd = new List<City>();  
         CityTo CityTo = new CityTo();
-        
+        private readonly CityDbContext _context;
 
         public MainWindow()
         {
             InitializeComponent();
-            using var db = new CityDbContext();
-            db.Database.EnsureCreated();
-            CityData.Initialize(db);
+            _context = new CityDbContext();
+            _context.Database.EnsureCreated();
+            CityData.Initialize(_context);
             Map_Loaded();
             statusText.Text = "Map connected successfully.";   
 
@@ -63,7 +64,7 @@ namespace MapCityProject
 
             }
         }
-       
+        
 
         private void LoadCityesClick(object sender, RoutedEventArgs e)
         {
@@ -85,6 +86,13 @@ namespace MapCityProject
         {
             Direction direction = new Direction();
             direction.UpdateMap(MainMap);
+        }
+
+        private void OpenDetail(object sender, RoutedEventArgs e)
+        {
+            
+            WindowDetails windowDetail = new WindowDetails();
+            windowDetail.ShowDialog();
         }
     }
 }

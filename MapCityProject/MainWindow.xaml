@@ -19,7 +19,8 @@
         <Button Content="Update" Click="LoadCityesClick" Width="150" Margin="0,20,0,0" BorderBrush="Coral" Foreground="Green" FontSize="20"/>
         <Button Content="My map" Width="150" Margin="0,20,0,0" BorderBrush="Coral" Background="gold" Foreground="Black" FontSize="20" Click="Button_Click"/>
         <Button Content="Clear" Width="150" Margin="0,20,0,0" BorderBrush="Blue" Background="LightBlue" Foreground="Black" FontSize="20" Click="Button_Click_1"/>
-            
+        <Button Content="Details" Width="150" Margin="0,20,0,0" BorderBrush="Purple" Background="Violet" Foreground="Black" FontSize="20" Click="OpenDetail"/>
+
         </StackPanel>
         <StackPanel HorizontalAlignment="Right" Margin="5" Orientation="Vertical" Background="CadetBlue">
             <gmap:GMapControl x:Name="MainMap" Width="500" Height="400" Margin="5" />
