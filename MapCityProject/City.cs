@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MapCityProject
 {
-    internal class City
+    public class City
     {
         [Key]
         public int Id { get; set; }

@@ -19,9 +19,33 @@ namespace MapCityProject.Windows
     /// </summary>
     public partial class EditCity : Window
     {
-        public EditCity()
+        private readonly CityDbContext _context;
+        private readonly City _city;
+        public EditCity(CityDbContext cityDbContext,City city)
         {
             InitializeComponent();
+            _context = cityDbContext;
+            _city = city;
+            CityNameTextBox.Text=_city.CityName;
+            CityNameCoordinateX.Text=_city.coordinateX.ToString();
+            CityNameCoordinateX.IsEnabled=false;
+            CityNameCoordinateY.Text=_city.coordinateY.ToString();
+            CityNameCoordinateY.IsEnabled=false;
+        }
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            _city.CityName = CityNameTextBox.Text;
+            if(float.TryParse(CityNameCoordinateX.Text, out float x))
+            {
+                _city.coordinateX = x;
+            }
+            if(float.TryParse(CityNameCoordinateY.Text, out float y))
+            {
+                _city.coordinateY = y;
+            }
+            _context.Cities.Add(_city);
+            _context.SaveChanges();
+            Close();
         }
     }
 }

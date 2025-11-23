@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MapCityProject
 {
-    internal class CityDbContext : DbContext
+    public class CityDbContext : DbContext
     {
         public DbSet<City> Cities { get; set; } 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

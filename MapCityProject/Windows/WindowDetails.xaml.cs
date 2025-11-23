@@ -46,8 +46,14 @@ namespace MapCityProject.Windows
         }
         private void CityGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            EditCity editCityWindow = new EditCity();
-            editCityWindow.ShowDialog();
+            
+           if(CityList.SelectedItem is City selectedCity)
+            {
+                EditCity editCityWindow = new EditCity(_context,selectedCity);
+                editCityWindow.ShowDialog();
+                // Refresh the city list after editing
+                CityList.ItemsSource = _context.Cities.ToList();
+            }
         }
 
     }
