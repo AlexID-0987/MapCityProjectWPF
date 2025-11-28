@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace MapCityProject.Services
 {
-    internal class AddCity
+    public class AddCity
     {
         private CityDbContext _context;
-        private City _city;
-        public AddCity(CityDbContext context)
+        //private City _city;
+        public AddCity()
         {
-            _context = context;
+            _context = new CityDbContext();
         }
         public void AddNewCity (City city)
         {
-            _city = city;
-            _context.Cities.Add(_city);
+            //_city = city;
+            _context.Cities.Add(city);
             _context.SaveChanges();
         }
     }

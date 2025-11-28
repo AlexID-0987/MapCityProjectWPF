@@ -12,7 +12,7 @@
         <Menu Height="25" VerticalAlignment="Top">
             <MenuItem Header="New">
                 <MenuItem Header="Open City" >
-                    <MenuItem Header="New City"></MenuItem>
+                    <MenuItem Header="New City" Click="AddNewCity"></MenuItem>
                 </MenuItem>
                 <Separator />
                 <MenuItem Header="Exit" ></MenuItem>

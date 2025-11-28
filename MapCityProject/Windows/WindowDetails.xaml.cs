@@ -55,6 +55,10 @@ namespace MapCityProject.Windows
                 CityList.ItemsSource = _context.Cities.ToList();
             }
         }
-
+        private void AddNewCity(object sender, RoutedEventArgs e)
+        {
+            AddCityToList addCityWindow = new AddCityToList();
+            addCityWindow.ShowDialog();
+        }
     }
 }
