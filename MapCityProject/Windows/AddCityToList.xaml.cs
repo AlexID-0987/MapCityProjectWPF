@@ -36,7 +36,8 @@ namespace MapCityProject.Windows
                 coordinateY = float.Parse(InputCoordinateY.Text)
             };
             addCityService.AddNewCity(city);
-
+            Close();
         }
     }
 }
+ 

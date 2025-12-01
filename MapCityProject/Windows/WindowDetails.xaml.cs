@@ -60,5 +60,6 @@ namespace MapCityProject.Windows
             AddCityToList addCityWindow = new AddCityToList();
             addCityWindow.ShowDialog();
         }
+        
     }
 }

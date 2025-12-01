@@ -47,5 +47,11 @@ namespace MapCityProject.Windows
             _context.SaveChanges();
             Close();
         }
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            _context.Cities.Remove(_city);
+            _context.SaveChanges();
+            Close();
+        }   
     }
 }
