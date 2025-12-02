@@ -1,5 +1,6 @@
 ﻿using MapCityProject.Model;
 using MapCityProject.Windows;
+using MyAdminDB;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -24,6 +25,7 @@ namespace MapCityProject
         IEnumerable<City> IEcityesEnd = new List<City>();  
         CityTo CityTo = new CityTo();
         private readonly CityDbContext _context;
+        private readonly AdminDbContext _adminContext;
 
         public MainWindow()
         {
@@ -31,6 +33,9 @@ namespace MapCityProject
             _context = new CityDbContext();
             _context.Database.EnsureCreated();
             CityData.Initialize(_context);
+            _adminContext = new AdminDbContext();
+            _adminContext.Database.EnsureCreated();
+            AdminData.InitialAdmin(_adminContext);
             Map_Loaded();
             statusText.Text = "Map connected successfully.";   
 
