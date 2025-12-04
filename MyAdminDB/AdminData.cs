@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MyAdminDB
 {
     public static class AdminData
-    {
+    { 
         public static void InitialAdmin(AdminDbContext adminDbContext)
         {
             if(!adminDbContext.Admins.Any())

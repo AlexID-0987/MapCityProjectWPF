@@ -21,16 +21,20 @@ namespace MapCityProject.Windows
     {
         private readonly CityDbContext _context;
         private readonly City _city;
-        public EditCity(CityDbContext cityDbContext,City city)
+        
+        public EditCity(CityDbContext cityDbContext , City city)
         {
             InitializeComponent();
             _context = cityDbContext;
             _city = city;
+
             CityNameTextBox.Text=_city.CityName;
             CityNameCoordinateX.Text=_city.coordinateX.ToString();
             CityNameCoordinateX.IsEnabled=false;
             CityNameCoordinateY.Text=_city.coordinateY.ToString();
             CityNameCoordinateY.IsEnabled=false;
+            
+
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
@@ -52,6 +56,7 @@ namespace MapCityProject.Windows
             _context.Cities.Remove(_city);
             _context.SaveChanges();
             Close();
-        }   
+        } 
+        
     }
 }

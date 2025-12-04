@@ -28,10 +28,10 @@ namespace MapCityProject.Windows
     public partial class WindowDetails : Window
     {
         private readonly CityDbContext _context;
-        public WindowDetails()
+        public WindowDetails(CityDbContext cityDbContext)
         {
             InitializeComponent();
-            _context = new CityDbContext();
+            _context = cityDbContext;
             Window_Loaded();
         }
         private void Window_Loaded()
@@ -49,10 +49,11 @@ namespace MapCityProject.Windows
             
            if(CityList.SelectedItem is City selectedCity)
             {
-                EditCity editCityWindow = new EditCity(_context,selectedCity);
+                EditCity editCityWindow = new EditCity(_context, selectedCity);
                 editCityWindow.ShowDialog();
                 // Refresh the city list after editing
                 CityList.ItemsSource = _context.Cities.ToList();
+                Close();
             }
         }
         private void AddNewCity(object sender, RoutedEventArgs e)

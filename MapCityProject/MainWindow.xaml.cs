@@ -96,8 +96,9 @@ namespace MapCityProject
         private void OpenDetail(object sender, RoutedEventArgs e)
         {
             
-            WindowDetails windowDetail = new WindowDetails();
-            windowDetail.ShowDialog();
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.ShowDialog();
         }
+        
     }
 }
